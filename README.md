@@ -13,7 +13,8 @@ Live site:
 - Operator detail view with locations, charging points, capacity, DC-fast share,
   connectors, power profile, geography, access, and rollout metrics.
 - Operator comparison mode for up to four operators.
-- Generated operator index derived from the cleaned charger parquet.
+- Generated operator and regional indexes derived from the cleaned charger
+  parquet.
 
 ## Stack
 
@@ -47,15 +48,18 @@ src/
     useTheme.ts
 scripts/
   build_operator_index.py
+  build_region_index.py
 public/data/
   chargers.clean.parquet
   operators.json
+  regions/
 docs/
   architecture.md
   data-pipeline.md
   deployment.md
   agent-guide.md
   operators-ui.md
+  region-metrics.md
 ```
 
 ## Run Locally
@@ -91,7 +95,7 @@ Remove-Item Env:\GITHUB_PAGES
 
 ## Rebuild Data
 
-The app reads `public/data/operators.json`. Regenerate it from
+The app data bundles are generated from
 `public/data/chargers.clean.parquet` with:
 
 ```powershell
@@ -113,3 +117,4 @@ More details:
 - [Data Pipeline](docs/data-pipeline.md)
 - [Deployment](docs/deployment.md)
 - [Operators UI](docs/operators-ui.md)
+- [Regional Metrics](docs/region-metrics.md)

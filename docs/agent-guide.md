@@ -74,10 +74,14 @@ Keep it in sync with `useTheme.ts` if the storage key or class name changes.
 
 ## Data And Metrics
 
-The app reads:
+The app reads generated static data bundles:
 
 ```text
 public/data/operators.json
+public/data/regions/index.json
+public/data/regions/states.json
+public/data/regions/districts/by-state/{stateSlug}.json
+public/data/regions/cities/by-district/{stateSlug}/{districtSlug}.json
 ```
 
 Regenerate it from the cleaned charger parquet with:
@@ -86,10 +90,11 @@ Regenerate it from the cleaned charger parquet with:
 npm run build:data
 ```
 
-The generator is:
+The generators are:
 
 ```text
 scripts/build_operator_index.py
+scripts/build_region_index.py
 ```
 
 Derived display logic lives in:
@@ -98,6 +103,27 @@ Derived display logic lives in:
 - `src/lib/operatorFormat.ts`
 - `src/lib/operatorMetrics.ts`
 - `src/lib/operatorMetrics.test.ts`
+
+Regional metric definitions live in:
+
+```text
+docs/region-metrics.md
+```
+
+The regional bundle is split for lazy drill-down loading. Use `states.json` for
+state overview, a `districts/by-state/*.json` file after a state is selected,
+and a `cities/by-district/*/*.json` file after a district is selected.
+
+Metric wording matters:
+
+- `chargingUnits` means BNetzA Ladeeinrichtung rows, not clustered physical
+  sites.
+- `chargingPoints` means summed registered Ladepunkte.
+- `reportedNominalKw` is source-reported nominal power, not utilization,
+  delivered energy, or installed grid capacity.
+- Regional city grain is `state + district + city`, not globally unique city
+  name.
+- Payment and connector percentages can overlap; do not sum them to 100.
 
 Prefer adding production metrics to the data generator instead of deriving
 large new metrics inside React components.
@@ -155,4 +181,3 @@ Known useful smoke path:
 - Do not restore deleted cleanup artifacts unless explicitly requested.
 - Do not commit generated `dist/`.
 - After a commit, use `git status --short` to confirm the tree is clean.
-
