@@ -17,18 +17,17 @@
 - Consider adding hover tooltips to rollout sparklines after the base Operators flow settles.
 
 source visual truth path:
-- `C:\Users\KitCat\AppData\Local\Temp\codex-clipboard-5a14e6d5-a559-4127-8f51-0c2e62e9f177.png`
-- `C:\Users\KitCat\AppData\Local\Temp\codex-clipboard-bfa4ee1a-8ab0-47f6-99ba-33103082fbd7.png`
-- `C:\Users\KitCat\AppData\Local\Temp\codex-clipboard-8b7e779b-89e1-4e3e-856c-4203b3fa3912.png`
-- `C:\Users\KitCat\Desktop\EV Mobility Dashboard\claude-designed\claude-design-mockup.html`
-- `C:\Users\KitCat\Desktop\EV Mobility Dashboard\claude-designed\DESIGN_HANDOFF.md`
-- `C:\Users\KitCat\Desktop\EV Mobility Dashboard\claude-designed\DESIGN_SPEC.md`
+- Original pasted screenshots and temporary handoff files were used during the
+  first implementation pass.
+- The old `claude-designed/` and `devlog/` folders have since been removed as
+  cleanup artifacts.
+- Current durable references are `docs/operators-ui.md`,
+  `docs/agent-guide.md`, this file, and the rendered app.
 
 implementation screenshot path:
-- `C:\Users\KitCat\Desktop\EV Mobility Dashboard\devlog\screenshots\0009-claude-operators-overview.png`
-- `C:\Users\KitCat\Desktop\EV Mobility Dashboard\devlog\screenshots\0010-claude-operators-detail.png`
-- `C:\Users\KitCat\Desktop\EV Mobility Dashboard\devlog\screenshots\0011-claude-operators-compare.png`
-- `C:\Users\KitCat\Desktop\EV Mobility Dashboard\devlog\screenshots\0012-claude-operators-mobile.png`
+- No committed screenshot output is currently retained.
+- Future QA screenshots should stay outside the repo unless the user explicitly
+  asks for committed artifacts.
 
 viewport:
 - Desktop: 1920x1200, deviceScaleFactor 1.
@@ -39,6 +38,7 @@ state:
 - Tesla Germany GmbH detail.
 - Tesla Germany GmbH and EnBW mobility+ AG und Co.KG compare.
 - Mobile overview.
+- Dark mode overview and compare.
 
 full-view comparison evidence:
 - Captured the three desktop states matching the supplied screenshot states, plus one mobile smoke capture.
@@ -55,5 +55,8 @@ patches made since previous QA pass:
 - Added rail virtualization after headless Chrome timed out on 11,806 rendered buttons.
 - Added small-screen nav hiding for inactive tabs and removed mobile leaderboard bar columns to prevent visible clipping.
 - Added document-level horizontal overflow clipping for a scrollbar-width mobile sliver.
+- Added light/dark theme support using semantic tokens and dashboard CSS variables.
+- Added `min-w-0` flex guards after a 320px mobile dark-mode QA pass found
+  horizontal overflow.
 
 final result: passed

@@ -95,3 +95,9 @@ browser network panel. It should request:
 
 If assets 404, verify that `GITHUB_PAGES=true` was present during the workflow
 build and that `dist/index.html` references `/ev-mobility-dashboard/assets/...`.
+
+If dark mode appears to flash light before settling, check that the early theme
+script in `index.html` still matches `src/lib/useTheme.ts`:
+
+- storage key: `ev-mobility-theme`
+- document class: `dark`

@@ -1,20 +1,22 @@
 # Operators UI
 
 The Operators section is a master-detail dashboard inspired by the Claude design
-handoff in `claude-designed/`.
+handoff that was used during the initial build. The temporary handoff and devlog
+artifacts were later removed during cleanup, so current repo documentation and
+the rendered app are now the durable reference.
 
 ## Design Sources
 
-Primary references:
+Primary durable references:
 
-- `claude-designed/claude-design-mockup.html`
-- `claude-designed/DESIGN_HANDOFF.md`
-- `claude-designed/DESIGN_SPEC.md`
-- `claude-designed/Screenshot 2026-06-21 193623.png`
-- `claude-designed/Screenshot 2026-06-21 193650.png`
-- `claude-designed/Screenshot 2026-06-21 193724.png`
+- Current rendered Operators app.
+- `docs/agent-guide.md`
+- `docs/architecture.md`
+- `design-qa.md`
+- Remaining files in `design-references/`.
 
-Visual QA outputs and prior snapshots live in `devlog/screenshots/`.
+Do not restore the old `claude-designed/` or `devlog/` folders unless the user
+explicitly asks for those deleted artifacts.
 
 ## Design Principles
 
@@ -27,6 +29,9 @@ The surface is intentionally restrained:
 - Weight and spacing for emphasis, not color-coding.
 - Inline SVG for rollout sparklines.
 - Real dashboard first screen, no marketing page.
+- Light and dark themes use the same layout and hierarchy.
+- Theme colors come from semantic tokens and dashboard CSS variables in
+  `src/index.css`.
 
 ## Interaction States
 
@@ -101,6 +106,22 @@ Small screens:
 - Header hides inactive nav items.
 - Rail stacks above the content.
 - Leaderboard progress bars hide to avoid horizontal overflow.
+- Flex boundaries use `min-w-0` to keep 320px-wide screens from horizontally
+  overflowing.
+
+## Dark Mode
+
+Dark mode is intentionally quiet and operational. It should not introduce a new
+visual personality.
+
+Implementation notes:
+
+- `src/lib/useTheme.ts` owns theme state and persistence.
+- `index.html` applies the initial `.dark` class before React boots.
+- Component colors should use semantic classes or dashboard variables from
+  `src/index.css`.
+- Add a named token in both `:root` and `.dark` when a new visual role is
+  needed.
 
 ## Current Limitations
 

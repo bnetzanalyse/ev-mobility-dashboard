@@ -8,7 +8,7 @@ Operators section of the EV Mobility Dashboard.
 1. `src/main.tsx` mounts the React app.
 2. `src/App.tsx` renders `AppShell`.
 3. `AppShell` owns the persistent frame: top navigation and full-height app
-   canvas.
+   canvas, including the light/dark mode toggle.
 4. `OperatorSearch` owns Operators state: search query, selected operator,
    compare mode, compare set, and KPI count-up progress.
 5. Operator views render from static JSON loaded from
@@ -40,6 +40,7 @@ under `src/components/operators/`.
 - `src/components/operators/CompareView.tsx`: compare matrix.
 - `src/components/operators/OperatorPrimitives.tsx`: reusable visual building
   blocks such as split bars, chips, metrics, section labels, and sparklines.
+- `src/lib/useTheme.ts`: theme state, persistence, and document class updates.
 
 ## Data Boundaries
 
@@ -66,6 +67,10 @@ render, but new production metrics should be generated in
 - `compareIds`: selected compare operators, capped at four.
 - `animationProgress`: 0 to 1 KPI count-up progress for detail header metrics.
 
+`useTheme` tracks light/dark display state outside the Operators state machine.
+It applies `.dark` to `document.documentElement` and stores explicit user
+choices in `localStorage`.
+
 ## Performance Notes
 
 The rail can represent all 11,806 operators, so it is virtualized in
@@ -86,6 +91,7 @@ Prefer:
 
 - Small, named components.
 - Existing design tokens from `src/index.css`.
+- New dashboard color roles as named CSS variables in both `:root` and `.dark`.
 - Hairline dividers and whitespace over nested cards.
 - Direct imports via `@/`.
 
@@ -93,5 +99,6 @@ Avoid:
 
 - Reintroducing large all-in-one components.
 - Ad hoc color palettes.
+- Manual one-off dark-mode color patches in components.
 - Chart libraries for the rollout sparkline unless the interaction requirements
   become much more complex.

@@ -22,6 +22,7 @@ Live site:
 - TypeScript
 - Tailwind CSS v4
 - shadcn/ui-ready project setup
+- Light/dark theme tokens
 - Vitest
 - GitHub Pages deployment through GitHub Actions
 
@@ -43,6 +44,7 @@ src/
     operatorMetrics.ts
     operatorMetrics.test.ts
     operatorTypes.ts
+    useTheme.ts
 scripts/
   build_operator_index.py
 public/data/
@@ -52,6 +54,7 @@ docs/
   architecture.md
   data-pipeline.md
   deployment.md
+  agent-guide.md
   operators-ui.md
 ```
 
@@ -105,6 +108,7 @@ GitHub Pages.
 
 More details:
 
+- [Future Agent Guide](docs/agent-guide.md)
 - [Architecture](docs/architecture.md)
 - [Data Pipeline](docs/data-pipeline.md)
 - [Deployment](docs/deployment.md)
