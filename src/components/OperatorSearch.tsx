@@ -26,7 +26,9 @@ export function OperatorSearch() {
 
     async function loadOperators() {
       try {
-        const response = await fetch("/data/operators.json")
+        const response = await fetch(
+          `${import.meta.env.BASE_URL}data/operators.json`,
+        )
         const data = (await response.json()) as OperatorIndex
 
         if (!ignore) {
