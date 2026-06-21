@@ -57,9 +57,9 @@ export function OperatorDetail({
           <button
             type="button"
             onClick={onCompare}
-            className="flex h-9 flex-none items-center gap-2 rounded-[10px] border border-[oklch(0.9_0_0)] bg-transparent px-4 text-sm text-[oklch(0.25_0_0)] transition-colors hover:bg-muted"
+            className="flex h-9 flex-none items-center gap-2 rounded-[10px] border border-[var(--dashboard-rule-strong)] bg-transparent px-4 text-sm text-foreground transition-colors hover:bg-muted"
           >
-            <Plus className="size-3.5 text-[oklch(0.35_0_0)]" />
+            <Plus className="size-3.5 text-muted-foreground" />
             Compare
           </button>
         </div>
@@ -95,13 +95,13 @@ export function OperatorDetail({
           <div className="relative">
             <SplitBar value={profile.dcFastPct} />
             <span
-              className="absolute -bottom-[5px] -top-[5px] w-px bg-[oklch(0.6_0_0)]"
+              className="absolute -bottom-[5px] -top-[5px] w-px bg-[var(--dashboard-text-subtle)]"
               style={{ left: `${nationalFastPct}%` }}
             />
           </div>
-          <div className="mt-2.5 flex justify-between text-xs text-[oklch(0.5_0_0)]">
+          <div className="mt-2.5 flex justify-between text-xs text-[var(--dashboard-text-soft)]">
             <LegendDot label={`${profile.dcFastPct}% DC fast`} tone="dark" />
-            <span className="text-[oklch(0.6_0_0)]">
+            <span className="text-[var(--dashboard-text-subtle)]">
               national median {nationalFastPct}%
             </span>
             <LegendDot
@@ -159,7 +159,7 @@ export function OperatorDetail({
           <div>
             <FieldLabel>power classes</FieldLabel>
             <PowerClassBar profile={profile} />
-            <div className="mt-2.5 flex flex-wrap gap-x-4 gap-y-1 text-xs text-[oklch(0.5_0_0)]">
+            <div className="mt-2.5 flex flex-wrap gap-x-4 gap-y-1 text-xs text-[var(--dashboard-text-soft)]">
               <LegendDot
                 label={`150kW+ / ${profile.powerClass150PlusPct}%`}
                 tone="dark"
@@ -188,13 +188,13 @@ export function OperatorDetail({
               />
               <div>
                 <FieldLabel>top cities</FieldLabel>
-                <p className="mt-1.5 text-sm leading-relaxed text-[oklch(0.25_0_0)]">
+                <p className="mt-1.5 text-sm leading-relaxed text-foreground">
                   {profile.topCities.join(" / ")}
                 </p>
               </div>
             </div>
-            <div className="flex h-[150px] min-w-0 flex-1 items-center justify-center rounded-lg bg-[repeating-linear-gradient(45deg,oklch(0.96_0_0),oklch(0.96_0_0)_7px,oklch(0.93_0_0)_7px,oklch(0.93_0_0)_14px)]">
-              <span className="font-mono text-[11px] text-[oklch(0.5_0_0)]">
+            <div className="flex h-[150px] min-w-0 flex-1 items-center justify-center rounded-lg bg-[repeating-linear-gradient(45deg,var(--dashboard-map-a),var(--dashboard-map-a)_7px,var(--dashboard-map-b)_7px,var(--dashboard-map-b)_14px)]">
+              <span className="font-mono text-[11px] text-[var(--dashboard-text-soft)]">
                 Germany / lat-lon dot map
               </span>
             </div>
@@ -229,7 +229,7 @@ export function OperatorDetail({
           <div className="flex flex-col gap-8 xl:flex-row xl:items-end xl:gap-12">
             <div className="min-w-0 flex-1">
               <RolloutSparkline points={profile.rolloutByYear} />
-              <div className="mt-1.5 flex justify-between text-[11px] text-[oklch(0.6_0_0)]">
+              <div className="mt-1.5 flex justify-between text-[11px] text-[var(--dashboard-text-subtle)]">
                 <span>{profile.firstLiveYear}</span>
                 <span>{profile.newestYear}</span>
               </div>

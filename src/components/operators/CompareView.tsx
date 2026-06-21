@@ -83,7 +83,7 @@ export function CompareView({
           <button
             type="button"
             onClick={onClear}
-            className="h-[34px] rounded-[9px] border border-[oklch(0.9_0_0)] px-3.5 text-[13px] text-[oklch(0.4_0_0)] transition-colors hover:bg-muted"
+            className="h-[34px] rounded-[9px] border border-[var(--dashboard-rule-strong)] px-3.5 text-[13px] text-foreground transition-colors hover:bg-muted"
           >
             Clear all
           </button>
@@ -105,7 +105,7 @@ export function CompareView({
               {profiles.map(({ operator }) => (
                 <div
                   key={operator.operator}
-                  className="flex min-w-0 flex-1 items-start justify-between gap-2 border-l border-[oklch(0.93_0_0)] px-[18px] py-[18px]"
+                  className="flex min-w-0 flex-1 items-start justify-between gap-2 border-l border-[var(--dashboard-rule)] px-[18px] py-[18px]"
                 >
                   <span className="min-w-0 text-[15px] font-semibold leading-snug tracking-[-0.01em]">
                     {operator.operator}
@@ -113,7 +113,7 @@ export function CompareView({
                   <button
                     type="button"
                     onClick={() => onRemove(operator)}
-                    className="flex size-5 flex-none items-center justify-center text-[oklch(0.6_0_0)]"
+                    className="flex size-5 flex-none items-center justify-center text-muted-foreground transition-colors hover:text-foreground"
                     aria-label={`Remove ${operator.operator}`}
                   >
                     <X className="size-3.5" strokeWidth={2.2} />
@@ -122,17 +122,17 @@ export function CompareView({
               ))}
             </div>
 
-            <div className="flex border-t border-[oklch(0.93_0_0)]">
+            <div className="flex border-t border-[var(--dashboard-rule)]">
               <div className="w-[180px] flex-none px-6 py-4 text-[13px] text-muted-foreground">
                 fast / normal
               </div>
               {profiles.map(({ operator, profile }) => (
                 <div
                   key={operator.operator}
-                  className="min-w-0 flex-1 border-l border-[oklch(0.93_0_0)] px-[18px] py-4"
+                  className="min-w-0 flex-1 border-l border-[var(--dashboard-rule)] px-[18px] py-4"
                 >
                   <SplitBar value={profile.dcFastPct} small />
-                  <div className="mt-2 text-xs text-[oklch(0.5_0_0)]">
+                  <div className="mt-2 text-xs text-[var(--dashboard-text-soft)]">
                     {profile.dcFastPct}% DC fast
                   </div>
                 </div>
@@ -147,7 +147,7 @@ export function CompareView({
               return (
                 <div
                   key={row.label}
-                  className="flex border-t border-[oklch(0.93_0_0)] last:border-b"
+                  className="flex border-t border-[var(--dashboard-rule)] last:border-b"
                 >
                   <div className="w-[180px] flex-none px-6 py-[15px] text-[13px] text-muted-foreground">
                     {row.label}
@@ -159,14 +159,14 @@ export function CompareView({
                     return (
                       <div
                         key={profile.operator.operator}
-                        className="min-w-0 flex-1 border-l border-[oklch(0.93_0_0)] px-[18px] py-[15px]"
+                        className="min-w-0 flex-1 border-l border-[var(--dashboard-rule)] px-[18px] py-[15px]"
                       >
                         <span
                           className={cn(
                             "text-lg tracking-[-0.01em]",
                             isBest
                               ? "font-bold text-foreground"
-                              : "font-medium text-[oklch(0.45_0_0)]",
+                              : "font-medium text-muted-foreground",
                           )}
                         >
                           {row.format(value)}
@@ -178,7 +178,7 @@ export function CompareView({
               )
             })}
 
-            <p className="mt-3.5 text-xs text-[oklch(0.6_0_0)]">
+            <p className="mt-3.5 text-xs text-[var(--dashboard-text-subtle)]">
               Leading value in each row shown in bold.
             </p>
           </div>

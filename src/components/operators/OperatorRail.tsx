@@ -58,7 +58,7 @@ export function OperatorRail({
     : `${formatInteger(operatorCount)} operators`
 
   return (
-    <aside className="flex h-[42vh] w-full flex-none flex-col border-b md:h-auto md:w-[340px] md:border-b-0 md:border-r">
+    <aside className="flex h-[42vh] w-full min-w-0 flex-none flex-col border-b md:h-auto md:w-[340px] md:border-b-0 md:border-r">
       <div className="flex flex-col gap-3 p-[18px] pb-3">
         <label className="relative block">
           <span className="sr-only">Search operators</span>
@@ -79,7 +79,7 @@ export function OperatorRail({
 
         <div className="flex items-center justify-between px-0.5 text-xs">
           <span className="text-muted-foreground">{railCountLabel}</span>
-          <span className="text-[oklch(0.4_0_0)]">
+          <span className="text-[var(--dashboard-text-soft)]">
             {compareMode ? "tap to add" : "Sort: Capacity"}
           </span>
         </div>
@@ -114,18 +114,18 @@ export function OperatorRail({
                   }
                   aria-pressed={isActive}
                   className={cn(
-                    "absolute left-0 right-0 flex h-12 items-center justify-between gap-3 border-b border-[oklch(0.94_0_0)] px-3 text-left transition-colors hover:bg-[oklch(0.985_0_0)]",
+                    "absolute left-0 right-0 flex h-12 items-center justify-between gap-3 border-b border-[var(--dashboard-rule)] px-3 text-left transition-colors hover:bg-[var(--dashboard-row-hover)]",
                     isActive
-                      ? "rounded-lg border-b-transparent bg-[oklch(0.95_0_0)]"
+                      ? "rounded-lg border-b-transparent bg-[var(--dashboard-row-active)]"
                       : "bg-transparent",
                   )}
                   style={{ top: absoluteIndex * railRowHeight }}
                 >
-                  <span className="min-w-0 truncate pr-1 text-[15px] font-normal text-[oklch(0.2_0_0)]">
+                  <span className="min-w-0 truncate pr-1 text-[15px] font-normal text-foreground">
                     {operator.operator}
                   </span>
                   <span className="flex flex-none items-center gap-2">
-                    <span className="text-[13px] text-[oklch(0.55_0_0)]">
+                    <span className="text-[13px] text-muted-foreground">
                       {formatMegawatts(operator.reportedNominalKw)} MW
                     </span>
                     {compareMode ? (
@@ -134,7 +134,7 @@ export function OperatorRail({
                           <Check className="size-3" strokeWidth={3} />
                         </span>
                       ) : (
-                        <span className="flex size-[18px] items-center justify-center rounded-full border border-[oklch(0.8_0_0)] text-[oklch(0.45_0_0)]">
+                        <span className="flex size-[18px] items-center justify-center rounded-full border border-[var(--dashboard-rule-strong)] text-muted-foreground">
                           <Plus className="size-3" strokeWidth={2} />
                         </span>
                       )

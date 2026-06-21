@@ -4,6 +4,23 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      let theme = null
+
+      try {
+        theme = localStorage.getItem("ev-mobility-theme")
+      } catch {
+        // Ignore storage failures before React boots.
+      }
+
+      const prefersDark =
+        window.matchMedia?.("(prefers-color-scheme: dark)").matches ?? false
+
+      if (theme === "dark" || (!theme && prefersDark)) {
+        document.documentElement.classList.add("dark")
+        document.documentElement.style.colorScheme = "dark"
+      }
+    </script>
     <title>ev-mobility-dashboard</title>
   </head>
   <body>
