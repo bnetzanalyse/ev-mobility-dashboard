@@ -5,7 +5,8 @@ import path from 'node:path'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/',
+  base:
+    process.env.GITHUB_PAGES === 'true' ? '/ev-mobility-dashboard/' : '/',
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
